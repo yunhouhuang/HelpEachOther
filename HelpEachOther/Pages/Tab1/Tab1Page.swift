@@ -25,7 +25,7 @@ struct Tab1Page: View {
                     Image("avatar").resizable().frame(width: 34, height: 34).clipShape(Circle())
                 }.padding(.horizontal)
 
-                // 筛选框
+                // 筛选框，todo 这里要处理键盘回收，demo意义不大这里先不写，点击非键盘区域，键盘回收
                 HStack {
                     HStack {
                         Image(systemName: "line.3.horizontal.decrease.circle")
