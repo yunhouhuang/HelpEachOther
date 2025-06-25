@@ -38,7 +38,7 @@ struct BottomActionBar: View {
         }
         .padding(.horizontal)
         .padding(.vertical, 8)
-        .background(Color.white)
+        .background(Color(.systemBackground))
         .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: -2)
         .sheet(isPresented: $show) {
             VStack{

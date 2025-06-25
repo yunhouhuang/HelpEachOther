@@ -46,6 +46,14 @@ class DispatchTaskApi {
         case serverError
     }
     
+    private var attachmentImageURLs = [
+        // 用github项目图片
+        URL(string: "https://github.com/yunhouhuang/HelpEachOther/blob/master/HelpEachOther/Assets.xcassets/image1.imageset/f427d3512531ea9c1569247de8c756d57c7c66bf.png")!,
+        URL(string: "https://github.com/yunhouhuang/HelpEachOther/blob/master/HelpEachOther/Assets.xcassets/image2.imageset/b6e2be78e7b864dd6757a45d67856fdf6a8f4fea.png")!,
+        URL(string: "https://github.com/yunhouhuang/HelpEachOther/blob/master/HelpEachOther/Assets.xcassets/iamge3.imageset/4681935c85a75da8ce2754872972abd0f95c959b.png")!,
+        URL(string: "https://github.com/yunhouhuang/HelpEachOther/blob/master/HelpEachOther/Assets.xcassets/image4.imageset/c06803e25f03d97332d1c61edf7f881875e67579.png")!,
+    ]
+    
     // 声明：模拟数据 AI 生成
     private var mockTasks: [DispatchTask] {
         let user1 = UserInfo(
@@ -89,7 +97,7 @@ class DispatchTaskApi {
                 location: "", // 线上服务，无需地址
                 description: "需要一位英语母语人士帮我练习英语口语，主要是商务英语对话。可通过Zoom或Teams进行远程辅导。",
                 distance: nil, // 线上服务，无需距离
-                attachmentImageURLs: [],
+                attachmentImageURLs: attachmentImageURLs,
                 status: .closed
             ),
             DispatchTask(
@@ -124,7 +132,7 @@ class DispatchTaskApi {
                 location: "广州市白云区白云路456号", // 上门服务，需要详细地址
                 description: "笔记本电脑需要重装系统，并安装一些常用软件。电脑型号是MacBook Pro 2021，需要安装最新的macOS系统。",
                 distance: 8.2, // 8.2公里
-                attachmentImageURLs: [],
+                attachmentImageURLs: attachmentImageURLs,
                 status: .accepted
             ),
             DispatchTask(
@@ -140,7 +148,7 @@ class DispatchTaskApi {
                 location: "广州市天河体育中心篮球场3号场", // 线下活动，需要详细地址
                 description: "找一位篮球爱好者一起打球，水平不限，主要是交朋友。我打球水平一般，希望能找到耐心指导的伙伴。",
                 distance: 5.7, // 5.7公里
-                attachmentImageURLs: [],
+                attachmentImageURLs: attachmentImageURLs,
                 status: .pending
             ),
             DispatchTask(
@@ -174,7 +182,7 @@ class DispatchTaskApi {
                 location: "", // 线上服务，无需地址
                 description: "需要一位数据分析师帮忙分析一批销售数据，并制作可视化报表。数据格式为Excel，约5000条记录。",
                 distance: nil, // 线上服务，无需距离
-                attachmentImageURLs: [],
+                attachmentImageURLs: attachmentImageURLs,
                 status: .pending
             ),
             DispatchTask(
@@ -190,7 +198,7 @@ class DispatchTaskApi {
                 location: "广州市越秀区中山五路88号", // 门店服务，需要详细地址
                 description: "需要一位有销售经验的人员在我的服装店帮忙提供客户咨询服务，主要负责介绍产品和促成交易。",
                 distance: 15.8, // 15.8公里
-                attachmentImageURLs: [],
+                attachmentImageURLs: attachmentImageURLs,
                 status: .pending
             )
         ]

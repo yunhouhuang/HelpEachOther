@@ -37,7 +37,7 @@ struct DispatchTaskDetailView: View {
                 ZStack(alignment: .top) {
                     // 地图视图，根据滚动偏移量调整位置
                     // 这里还可以实现拉伸增加地图高度等优化
-                        MapView(region: $region).frame(height: mapHeight + 100 + safeArea).offset(y: -(scrollOffset + 100))
+                        MapView(region: $region).frame(height: mapHeight + 300 + safeArea).offset(y: -(scrollOffset + 100))
                    
                     
                     // 内容视图
@@ -91,13 +91,13 @@ struct DispatchTaskDetailView: View {
                                 }
                                 
                                 // 底部额外空间，确保内容足够长
-                                Color.white
+                                Color(.systemBackground)
                                     .frame(height: 200)
                                     .opacity(0)
                             }
                             .padding()
                         }
-                        .background(Color.white)
+                        .background(Color(.systemBackground))
                         .cornerRadius(20, corners: [.topLeft, .topRight])
                         .offset(y: -20)
                         .zIndex(2) // 确保内容在地图上方
@@ -118,6 +118,7 @@ struct DispatchTaskDetailView: View {
                     .safeAreaPadding(.bottom)
             }
         }
+        .toolbar(.hidden)
         .ignoresSafeArea(.all)
     }
 }
@@ -149,7 +150,7 @@ struct HeaderBar: View {
                 if opacity > 0.7 {
                     Text("\(title)")
                         .font(.headline)
-                        .foregroundColor(.black)
+                        .foregroundColor(.primary)
                         .opacity((opacity - 0.7) * 3.3) // 标题文字渐变显示
                 }
                 
