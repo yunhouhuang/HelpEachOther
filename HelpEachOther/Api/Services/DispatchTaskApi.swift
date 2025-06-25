@@ -48,10 +48,10 @@ class DispatchTaskApi {
     
     private var attachmentImageURLs = [
         // 用github项目图片
-        URL(string: "https://github.com/yunhouhuang/HelpEachOther/blob/master/HelpEachOther/Assets.xcassets/image1.imageset/f427d3512531ea9c1569247de8c756d57c7c66bf.png")!,
-        URL(string: "https://github.com/yunhouhuang/HelpEachOther/blob/master/HelpEachOther/Assets.xcassets/image2.imageset/b6e2be78e7b864dd6757a45d67856fdf6a8f4fea.png")!,
-        URL(string: "https://github.com/yunhouhuang/HelpEachOther/blob/master/HelpEachOther/Assets.xcassets/iamge3.imageset/4681935c85a75da8ce2754872972abd0f95c959b.png")!,
-        URL(string: "https://github.com/yunhouhuang/HelpEachOther/blob/master/HelpEachOther/Assets.xcassets/image4.imageset/c06803e25f03d97332d1c61edf7f881875e67579.png")!,
+        URL(string: "https://github.com/yunhouhuang/HelpEachOther/blob/master/HelpEachOther/Assets.xcassets/image1.imageset/f427d3512531ea9c1569247de8c756d57c7c66bf.png?raw=true")!,
+        URL(string: "https://github.com/yunhouhuang/HelpEachOther/blob/master/HelpEachOther/Assets.xcassets/image2.imageset/b6e2be78e7b864dd6757a45d67856fdf6a8f4fea.png?raw=true")!,
+        URL(string: "https://github.com/yunhouhuang/HelpEachOther/blob/master/HelpEachOther/Assets.xcassets/iamge3.imageset/4681935c85a75da8ce2754872972abd0f95c959b.png?raw=true")!,
+        URL(string: "https://github.com/yunhouhuang/HelpEachOther/blob/master/HelpEachOther/Assets.xcassets/image4.imageset/c06803e25f03d97332d1c61edf7f881875e67579.png?raw=true")!,
     ]
     
     // 声明：模拟数据 AI 生成

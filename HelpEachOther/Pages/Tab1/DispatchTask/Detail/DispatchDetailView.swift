@@ -20,15 +20,15 @@ struct DispatchTaskDetailView: View {
         center: CLLocationCoordinate2D(latitude: 23.129163, longitude: 113.264435),
         span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
     )
-    
+
     @State private var headerBackgroundVisible = false
     @State private var scrollOffset: CGFloat = 0
     private let mapHeight: CGFloat = 400
-    
+
     var body: some View {
         GeometryReader { proxy in
             let safeArea = proxy.safeAreaInsets.top + proxy.safeAreaInsets.bottom
-           
+
             // 可滚动的详情内容
             ScrollViewOffset {
                 scrollOffset = $0
@@ -38,14 +38,14 @@ struct DispatchTaskDetailView: View {
                     // 地图视图，根据滚动偏移量调整位置
                     // 这里还可以实现拉伸增加地图高度等优化
                         MapView(region: $region).frame(height: mapHeight + 300 + safeArea).offset(y: -(scrollOffset + 100))
-                   
-                    
+
+
                     // 内容视图
                     VStack(spacing: 0) {
                         // 透明占位符，与地图高度相同
                         Color.clear
                             .frame(height: mapHeight)
-                        
+
                         // 详情内容
                         VStack(alignment: .leading, spacing: 0) {
                             // 滑动指示器
@@ -57,7 +57,7 @@ struct DispatchTaskDetailView: View {
                                 Spacer()
                             }
                             .padding(.top)
-                            
+
                             // 详情内容
                             VStack(alignment: .leading, spacing: 16) {
                                 // 倒计时和价格
@@ -66,30 +66,30 @@ struct DispatchTaskDetailView: View {
                                     Spacer()
                                     PriceView(price: task.price)
                                 }
-                                
+
                                 // 标题
                                 Text(task.title)
                                     .font(.title)
                                     .fontWeight(.bold)
-                                
+
                                 // 发布者信息
                                 PublisherInfoView(publisher: task.publisher)
-                                
+
                                 Divider()
-                                
+
                                 // 服务详情
                                 ServiceDetailsView(task: task)
-                                
+
                                 Divider()
-                                
+
                                 // 服务描述
                                 ServiceDescriptionView(description: task.description)
-                                
+
                                 // 附件图片
                                 if !task.attachmentImageURLs.isEmpty {
                                     AttachmentImagesView(images: task.attachmentImageURLs)
                                 }
-                                
+
                                 // 底部额外空间，确保内容足够长
                                 Color(.systemBackground)
                                     .frame(height: 200)
@@ -104,13 +104,13 @@ struct DispatchTaskDetailView: View {
                     }
                 }
                 .padding(.bottom, 80) // 为底部操作栏留出空间
-                
+
             }
 
-            
+
             // 顶部导航栏
             HeaderBar(scrollOffset: scrollOffset,title: task.title)
-            
+
             // 底部操作栏
             VStack {
                 Spacer()
@@ -127,11 +127,11 @@ struct HeaderBar: View {
     @Environment(\.dismiss) private var dismiss
     var scrollOffset: CGFloat = 0
     var title: String = ""
-    
+
     var body: some View {
         let opacity = calculateOpacity(scrollOffset: scrollOffset)
-        
-       
+
+
             // 内容
             HStack {
                 Button(action: {
@@ -146,14 +146,14 @@ struct HeaderBar: View {
                         )
                         .padding()
                 }
-                
+
                 if opacity > 0.7 {
                     Text("\(title)")
                         .font(.headline)
                         .foregroundColor(.primary)
                         .opacity((opacity - 0.7) * 3.3) // 标题文字渐变显示
                 }
-                
+
                 Spacer()
             }.safeAreaPadding(.top)
             .padding(.top,12)
@@ -162,9 +162,9 @@ struct HeaderBar: View {
                     .opacity(opacity)
                     .ignoresSafeArea(.all, edges: .top)
             ).animation(.easeInOut, value: opacity)
-     
+
     }
-    
+
     // 根据滚动值计算透明度
     private func calculateOpacity(scrollOffset: CGFloat) -> Double {
         // 滚动值为0时完全透明，滚动到-200时完全不透明
@@ -185,13 +185,13 @@ struct HeaderBar: View {
 struct CountdownView: View {
     var minutes: Int
     var isExpired: Bool
-    
+
     var body: some View {
         HStack(spacing: 4) {
             Text("\(minutes)分钟")
                 .font(.system(size: 20, weight: .bold))
                 .foregroundColor(.orange)
-            
+
             Text("投标关闭")
                 .font(.system(size: 16))
                 .foregroundColor(.secondary)
@@ -202,17 +202,17 @@ struct CountdownView: View {
 // 价格视图
 struct PriceView: View {
     var price: Double
-    
+
     var body: some View {
         HStack(alignment: .firstTextBaseline, spacing: 2) {
             Text("参考报价")
                 .font(.system(size: 14))
                 .foregroundColor(.secondary)
-            
+
             Text("\(Int(price))")
                 .font(.system(size: 28, weight: .bold))
                 .foregroundColor(.red)
-            
+
             Text("元")
                 .font(.system(size: 16))
                 .foregroundColor(.red)
@@ -258,10 +258,10 @@ struct RoundedCorner: Shape {
             distance: 5.7,
             attachmentImageURLs: [
                 // 用github项目图片
-                URL(string: "https://github.com/yunhouhuang/HelpEachOther/blob/master/HelpEachOther/Assets.xcassets/image1.imageset/f427d3512531ea9c1569247de8c756d57c7c66bf.png")!,
-                URL(string: "https://github.com/yunhouhuang/HelpEachOther/blob/master/HelpEachOther/Assets.xcassets/image2.imageset/b6e2be78e7b864dd6757a45d67856fdf6a8f4fea.png")!,
-                URL(string: "https://github.com/yunhouhuang/HelpEachOther/blob/master/HelpEachOther/Assets.xcassets/iamge3.imageset/4681935c85a75da8ce2754872972abd0f95c959b.png")!,
-                URL(string: "https://github.com/yunhouhuang/HelpEachOther/blob/master/HelpEachOther/Assets.xcassets/image4.imageset/c06803e25f03d97332d1c61edf7f881875e67579.png")!,
+                URL(string: "https://github.com/yunhouhuang/HelpEachOther/blob/master/HelpEachOther/Assets.xcassets/image1.imageset/f427d3512531ea9c1569247de8c756d57c7c66bf.png?raw=true")!,
+                URL(string: "https://github.com/yunhouhuang/HelpEachOther/blob/master/HelpEachOther/Assets.xcassets/image2.imageset/b6e2be78e7b864dd6757a45d67856fdf6a8f4fea.png?raw=true")!,
+                URL(string: "https://github.com/yunhouhuang/HelpEachOther/blob/master/HelpEachOther/Assets.xcassets/iamge3.imageset/4681935c85a75da8ce2754872972abd0f95c959b.png?raw=true")!,
+                URL(string: "https://github.com/yunhouhuang/HelpEachOther/blob/master/HelpEachOther/Assets.xcassets/image4.imageset/c06803e25f03d97332d1c61edf7f881875e67579.png?raw=true")!,
             ],
             status: .pending
         )
