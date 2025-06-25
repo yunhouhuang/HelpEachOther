@@ -7,7 +7,7 @@
 
 import Foundation
 
-// 全局API访问点
+// 全局API访问点，通过shared单例访问
 class API {
     static let dispatchTask = DispatchTaskApi.shared
 }

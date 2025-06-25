@@ -10,23 +10,13 @@ import SwiftData
 
 @main
 struct HelpEachOtherApp: App {
-    var sharedModelContainer: ModelContainer = {
-        let schema = Schema([
-            Item.self,
-        ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-
-        do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
-        } catch {
-            fatalError("Could not create ModelContainer: \(error)")
-        }
-    }()
-
+    // 放这里的原因是为了避免重复创建ViewModel，当然也可以放在ContentView中
+    @StateObject private var dispatchListViewModel = DispatchListViewModel()
+  
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(dispatchListViewModel)
         }
-        .modelContainer(sharedModelContainer)
     }
 }
