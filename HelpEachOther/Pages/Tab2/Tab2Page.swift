@@ -9,7 +9,9 @@ import SwiftUI
 
 struct Tab2Page: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            Text("这里是死党页面")
+        }
     }
 }
 
