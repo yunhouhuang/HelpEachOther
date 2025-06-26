@@ -44,8 +44,7 @@ struct ImageGridLayout: View {
     
     // 计算第3和第4张图片的高度（正方形）
     private var smallImageSize: CGFloat {
-        // 第二张图片高度减去中间间距，再除以2
-        (secondImageWidth - 8) / 2
+        (secondImageWidth - 8) / 2  // 两个正方形图片加上中间的间距等于第二张图片的高度
     }
     
     var body: some View {
@@ -64,17 +63,18 @@ struct ImageGridLayout: View {
                     // 右侧区域：包含第三、四张图片
                     if images.count > 2 {
                         VStack(spacing: 8) {
-                            // 第三张图片
-                            ImageItem(url: images[2], width: thirdImageWidth, height: smallImageSize)
+                            // 第三张图片 - 正方形
+                            ImageItem(url: images[2], width: thirdImageWidth, height: thirdImageWidth)
                             
-                            // 第四张图片
+                            // 第四张图片 - 正方形
                             if images.count > 3 {
-                                ImageItem(url: images[3], width: thirdImageWidth, height: smallImageSize)
+                                ImageItem(url: images[3], width: thirdImageWidth, height: thirdImageWidth)
                             } else {
                                 Spacer()
-                                    .frame(width: thirdImageWidth, height: smallImageSize)
+                                    .frame(width: thirdImageWidth, height: thirdImageWidth)
                             }
                         }
+                        .frame(height: secondImageWidth)
                     } else {
                         // 如果没有第三张图片，添加空白占位符
                         Spacer()
